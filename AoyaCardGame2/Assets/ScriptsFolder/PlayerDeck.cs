@@ -5,17 +5,15 @@ using UnityEngine;
 
 public class PlayerDeck : MonoBehaviour
 {
-    public List<Card> deck= new List<Card>();
+    public static List<Card> deck= new List<Card>();
     static public List<Card> staticDeck = new List<Card>();
 
-    public int x;
-
-    static  public int deckSize;
+    static public int deckSize;
 
     public bool IsPlayer;
     public GameObject Hand;
     public GameObject CardToHand;
-    public List<Card> container = new List<Card>();
+    //public List<Card> container = new List<Card>();
 
     public List<ThisCard> hand = new List<ThisCard>();
 
@@ -26,15 +24,14 @@ public class PlayerDeck : MonoBehaviour
         NumbersOfCardInDeck3.SetActive(true);
         NumbersOfCardInDeck2.SetActive(true);
         NumbersOfCardInDeck1.SetActive(true);*/
-        x = 0;
-        deckSize = 30;
-        /*   for (int i =0; i < deckSize ; i++)
-           {
-               x = Random.Range(1, 20);
-               deck[i] = CardDataBase.cardList[x];  
+        loadDeckData();
+        publicShuffleDeck();
+        DrawCard(5);
+    }
 
-           }*/
-
+    private void loadDeckData()
+    {
+                /*
         deck[0] = CardDataBase.cardList[0];
         deck[1] = CardDataBase.cardList[0];
         deck[2] = CardDataBase.cardList[1];
@@ -64,19 +61,44 @@ public class PlayerDeck : MonoBehaviour
         deck[26] = CardDataBase.cardList[18];
         deck[27] = CardDataBase.cardList[18];
         deck[28] = CardDataBase.cardList[19];
-        deck[29] = CardDataBase.cardList[19];
-        publicShuffleDeck();
-        DrawCard(5);
+        deck[29] = CardDataBase.cardList[19];*/
+
+        deck.Add(CardDataBase.cardList[0]);
+        deck.Add(CardDataBase.cardList[0]);
+        deck.Add(CardDataBase.cardList[1]);
+        deck.Add(CardDataBase.cardList[1]);
+        deck.Add(CardDataBase.cardList[2]);
+        deck.Add(CardDataBase.cardList[2]);
+        deck.Add(CardDataBase.cardList[3]);
+        deck.Add(CardDataBase.cardList[3]);
+        deck.Add(CardDataBase.cardList[3]);
+        deck.Add(CardDataBase.cardList[4]);
+        deck.Add(CardDataBase.cardList[5]);
+        deck.Add(CardDataBase.cardList[6]);
+        deck.Add(CardDataBase.cardList[7]);
+        deck.Add(CardDataBase.cardList[8]);
+        deck.Add(CardDataBase.cardList[9]);
+        deck.Add(CardDataBase.cardList[10]);
+        deck.Add(CardDataBase.cardList[11]);
+        deck.Add(CardDataBase.cardList[12]);
+        deck.Add(CardDataBase.cardList[13]);
+        deck.Add(CardDataBase.cardList[14]);
+        deck.Add(CardDataBase.cardList[15]);
+        deck.Add(CardDataBase.cardList[15]);
+        deck.Add(CardDataBase.cardList[15]);
+        deck.Add(CardDataBase.cardList[19]);
+
+        deckSize = deck.Count;
     }
 
     public void publicShuffleDeck()
     {
         for (int i = 0; i < deckSize ; i++)
         {
-            container[0] = deck[i];
+            Card auxCard = deck[i];
             int index = Random.Range(i, deckSize);
             deck[i] = deck[index];
-            deck[index] = container[0];
+            deck[index] = auxCard;
         }
     }
 
@@ -85,15 +107,16 @@ public class PlayerDeck : MonoBehaviour
         StartCoroutine(StartRound(amount));
     }
 
-    IEnumerator StartRound(int x)
+    IEnumerator StartRound(int amount)
     {
-        for (int i = 0; i < x; i++)
+        for (int i = 0; i < amount; i++)
         {
             yield return new WaitForSeconds(0.5f);
             GameObject obj = Instantiate(CardToHand, transform.position, transform.rotation);
             obj.GetComponent<CardInHandZone>().Play(Hand.transform);
             obj.GetComponent<ThisCard>().IsPlayerCard = IsPlayer;
             obj.GetComponent<ThisCard>().Hand = Hand;
+            obj.GetComponent<ThisCard>().ThisID = i;
             if (!IsPlayer) {
                 Destroy(obj.GetComponent<DragCard>());
             }

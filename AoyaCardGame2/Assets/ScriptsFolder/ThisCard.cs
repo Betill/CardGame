@@ -61,7 +61,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
    
     void Start()
     {
-        thisCard[0] = CardDataBase.cardList[ThisID];
+        thisCard[0] = PlayerDeck.deck[ThisID];
         NumbersOfCardsInDeck = PlayerDeck.deckSize;
 
         activated = false;
@@ -115,7 +115,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
 
         if (this.tag =="Clone")
         {
-            thisCard[0] = PlayerDeck.staticDeck[NumbersOfCardsInDeck -1];
+            thisCard[0] = PlayerDeck.deck[NumbersOfCardsInDeck -1];
 
             NumbersOfCardsInDeck -= 1;
             PlayerDeck.deckSize -= 1;
