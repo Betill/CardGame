@@ -8,18 +8,12 @@ using UnityEngine.UI;
 
 public class ThisCard : MonoBehaviour, IPointerClickHandler 
 {
-    public List<Card> thisCard = new List<Card>();
+    public int id;
+    public Card thisCard;
 
     public Sprite thisSprite;
     public Image thatImage;
     public Image Border;
-
-    public string cardName;
-    public int ThisID;
-    public int iD;
-    public int attackPower;
-    public int health;
-    public int coolDown;
 
     public Text nameText;
     public Text attackText;
@@ -47,75 +41,97 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
     public bool Selected;
     public bool onBattleField;
 
+    private CardBack cardBack;
+
+    public UnityAction OnCardSelected;
+    public UnityAction OnCardDeselected;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (onBattleField)
+        //DeselectAllCards();
+        //TODO: Deselect all cards
+        SelectCard();
+
+    }
+
+    private void SelectCard()
+    {
+        Debug.Log("Selected");
+        /*if (!onBattleField)
         {
-            DeselectAllCards();
-            if (activated) {
-                Selected = true;
-            }
+            Border.color = new Color(.16f, .16f, .16f);
+            return;
         }
+
+        if (!activated)
+        {
+            Border.color = new Color(.92f, .08f, .08f);
+            return;
+        }
+
+        if (!Selected)
+        {
+            Border.color = new Color(.48f, .48f, .48f);
+            return;
+        }*/
+
+        Border.color = new Color(.12f, .96f, .16f);
+        OnCardSelected?.Invoke();
+    }
+
+    private void DeselectCard()
+    {
+        //Do color change
+        OnCardDeselected?.Invoke();
     }
 
    
     void Start()
     {
-        thisCard[0] = PlayerDeck.deck[ThisID];
+        thisCard = PlayerDeck.deck[id];
+        cardBack = GetComponent<CardBack>();
         NumbersOfCardsInDeck = PlayerDeck.deckSize;
+        Enemy = GameObject.Find("EnemyGO(Clone)");
 
         activated = false;
         InBattleSpace = false;
+        thisSprite = thisCard.ThisImage;
+        thisEffectSprite = thisCard.EffectImage;
 
-        Enemy = GameObject.Find("EnemyGO(Clone)");       
-    }
+        nameText.text = "" + thisCard.CardName;
+        attackText.text = "" + thisCard.AttackPower.ToString();
+        healthText.text = "" + thisCard.Health.ToString();
+        cooldownText.text = "" + thisCard.CoolDown.ToString();
 
-    public void Play(int cardIdr)
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()        
-    {
         if (this.transform.parent == Hand.transform)
         {
-            if (IsPlayerCard) {
+            if (IsPlayerCard)
+            {
                 IsCardBack = false;
-            } else {
+                cardBack.ShowFront();
+            }
+            else
+            {
                 IsCardBack = true;
+                cardBack.ShowBack();
             }
         }
 
         BattlePanel = GameObject.Find("Panel");
-        if (this.transform.parent == BattlePanel.transform  )
+        if (this.transform.parent == BattlePanel.transform)
         {
             gameObject.GetComponent<DragCard>().enabled = false;
         }
 
-        iD = thisCard[0].ID;
-        cardName = thisCard[0].CardName;
-        attackPower = thisCard[0].AttackPower;
-        health = thisCard[0].Health;
-        coolDown = thisCard[0].CoolDown;
-
-        thisSprite = thisCard[0].ThisImage;
-        thisEffectSprite = thisCard[0].EffectImage;
-
-        nameText.text = "" +cardName;
-        attackText.text = "" + attackPower.ToString ();
-        healthText.text = "" + health.ToString ();
-        cooldownText.text = "" +  coolDown.ToString ();
-
         thatImage.sprite = thisSprite;
         thatEffectImage.sprite = thisEffectSprite;
 
-      //  IsCardBackStatic = IsCardBack;
+        //  IsCardBackStatic = IsCardBack;
         // CardBackScript.UpdateCard(IsCardBack);
 
-        if (this.tag =="Clone")
+        if (this.tag == "Clone")
         {
-            thisCard[0] = PlayerDeck.deck[NumbersOfCardsInDeck -1];
+            thisCard = PlayerDeck.deck[NumbersOfCardsInDeck - 1];
 
             NumbersOfCardsInDeck -= 1;
             PlayerDeck.deckSize -= 1;
@@ -123,31 +139,23 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
             this.tag = "InHand";
         }
 
-        activated = (TurnEnum.CurrentTurn >= (playedOnTurn + (coolDown * 2)));
+        activated = (TurnEnum.CurrentTurn >= (playedOnTurn + (thisCard.CoolDown * 2)));
 
-        if (onBattleField) {
-            if (activated) {
-                if (Selected) {
-                    Border.color = new Color(.12f, .96f, .16f);
-                } else {
-                    Border.color = new Color(.48f, .48f, .48f);
-                }
-            } else {
-                Border.color = new Color(.92f, .08f, .08f);
-            }
-        } else {
-            Border.color = new Color(.16f, .16f, .16f);
-        }      
     }
 
-    public static void DeselectAllCards()
+    public void Play(int cardIdr)
     {
-        var allCards = GameObject.FindObjectsOfType(typeof(ThisCard));
-        foreach (var card in allCards)
-        {
-            (card as ThisCard).Selected = false;
-        }
+        
     }
+
+    //public static void DeselectAllCards()
+    //{
+    //    var allCards = GameObject.FindObjectsOfType(typeof(ThisCard));
+    //    foreach (var card in allCards)
+    //    {
+    //        (card as ThisCard).Selected = false;
+    //    }
+    //}
 
 
 }

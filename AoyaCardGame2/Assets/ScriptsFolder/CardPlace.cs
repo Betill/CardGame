@@ -27,12 +27,12 @@ public class CardPlace : MonoBehaviour, IDropHandler , IPointerEnterHandler ,IPo
 
             foreach (ThisCard  item in cardsOnBF )
             {
-                if (item.coolDown ==0)
+                if (item.thisCard.CoolDown ==0)
                 {
                     
                 }
             }
-            Debug.Log("was dropped on battle filed");
+            //Debug.Log("was dropped on battle filed");
         }
 
     }

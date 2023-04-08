@@ -582,7 +582,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1242,6 +1242,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827541671}
   m_CullTransparentMesh: 1
+--- !u!1 &836698485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 836698486}
+  - component: {fileID: 836698487}
+  m_Layer: 0
+  m_Name: CardsEffectsController
+  m_TagString: EffectController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &836698486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836698485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &836698487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836698485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b71fcaf0e74324a93a5b5c761677df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &857264894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,229 +1446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da8e3ff2110f3041ae17c59be81f3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck:
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  x: 0
   IsPlayer: 0
   Hand: {fileID: 1210846451}
   CardToHand: {fileID: 8433881700833631998, guid: 2950e0ec78c16804cbba4bedf9a19840, type: 3}
-  container:
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
   hand: []
 --- !u!114 &876219443
 MonoBehaviour:
@@ -3022,229 +2846,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da8e3ff2110f3041ae17c59be81f3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck:
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
-  x: 0
   IsPlayer: 1
   Hand: {fileID: 1280462446}
   CardToHand: {fileID: 8433881700833631998, guid: 2950e0ec78c16804cbba4bedf9a19840, type: 3}
-  container:
-  - ID: 0
-    CardName: 
-    AttackPower: 0
-    Health: 0
-    CoolDown: 0
-    ThisImage: {fileID: 0}
-    EffectImage: {fileID: 0}
   hand: []
 --- !u!1 &1801266170
 GameObject:

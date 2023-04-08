@@ -14,9 +14,11 @@ public class Card
     public Sprite ThisImage;
     public Sprite EffectImage;
 
+    public List<IEffect> Effects;
+
     public Card() { }
 
-    public Card(int ID, string CardName, int AttackPower, int Health, int CoolDown, Sprite ThisImage, Sprite EffectImage)
+    public Card(int ID, string CardName, int AttackPower, int Health, int CoolDown, Sprite ThisImage, Sprite EffectImage, List<IEffect> effects)
     {
         this.ID = ID;
         this.CardName = CardName;
@@ -25,6 +27,7 @@ public class Card
         this.CoolDown  = CoolDown;
         this.ThisImage = ThisImage;
         this.EffectImage = EffectImage;
+        this.Effects = effects;
     }
 
 }

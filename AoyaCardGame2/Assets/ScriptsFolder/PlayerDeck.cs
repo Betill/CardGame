@@ -116,7 +116,8 @@ public class PlayerDeck : MonoBehaviour
             obj.GetComponent<CardInHandZone>().Play(Hand.transform);
             obj.GetComponent<ThisCard>().IsPlayerCard = IsPlayer;
             obj.GetComponent<ThisCard>().Hand = Hand;
-            obj.GetComponent<ThisCard>().ThisID = i;
+            obj.GetComponent<ThisCard>().id = i;
+
             if (!IsPlayer) {
                 Destroy(obj.GetComponent<DragCard>());
             }

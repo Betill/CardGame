@@ -4,32 +4,15 @@ using UnityEngine;
 
 public class CardBack : MonoBehaviour
 {
-    public ThisCard thiscard; // new
-    public GameObject card; // new
     public GameObject cardBack;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void ShowBack()
     {
-        thiscard = card.GetComponent<ThisCard>();
+        cardBack.SetActive(true);
     }
 
-    // Update is called once per frame
-  void Update()
+    public void ShowFront()
     {
-        if (thiscard.IsCardBack  ) // was static
-        {
-            cardBack.SetActive(true);
-        }
-        else
-        {
-            cardBack.SetActive(false);
-        }
-       
+        cardBack.SetActive(false);
     }
-   /* public void UpdateCard(bool updown)
-    {
-        cardBack.SetActive(updown);
-    }*/
 }

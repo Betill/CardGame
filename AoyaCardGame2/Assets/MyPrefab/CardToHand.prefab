@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 1937143507331550425}
   - component: {fileID: 7725833701804422750}
   - component: {fileID: 526145121082502983}
+  - component: {fileID: 8881433596455734366}
   m_Layer: 0
   m_Name: EffectButton
   m_TagString: Untagged
@@ -307,7 +308,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3116314076387541092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 73.6}
+  m_LocalPosition: {x: 0, y: 0, z: 74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -317,7 +318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.611, y: -117.4}
+  m_AnchoredPosition: {x: -2.611, y: -85}
   m_SizeDelta: {x: 89.178, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1937143507331550425
@@ -402,6 +403,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8881433596455734366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116314076387541092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c15f9def2746c4e951ada02ed18ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7235627635832238058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1213,7 @@ GameObject:
   - component: {fileID: -2259865119319607201}
   - component: {fileID: 146639250987504812}
   - component: {fileID: -4860740753961757560}
+  - component: {fileID: 4113629556822844054}
   m_Layer: 0
   m_Name: CardToHand
   m_TagString: Clone
@@ -1284,8 +1298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7172ce881f1d76a4eb6cd040908c180e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   thisCard:
-  - ID: 0
+    ID: 0
     CardName: 
     AttackPower: 0
     Health: 0
@@ -1295,12 +1310,6 @@ MonoBehaviour:
   thisSprite: {fileID: 0}
   thatImage: {fileID: 8433881700075634682}
   Border: {fileID: 4761139176578770998}
-  cardName: 
-  ThisID: 7
-  iD: 2
-  attackPower: 0
-  health: 0
-  coolDown: 0
   nameText: {fileID: 8433881700182330080}
   attackText: {fileID: 8433881700836381011}
   healthText: {fileID: 8433881701193072678}
@@ -1308,10 +1317,12 @@ MonoBehaviour:
   thisEffectSprite: {fileID: 0}
   thatEffectImage: {fileID: 8433881699733790933}
   IsCardBack: 0
+  IsPlayerCard: 0
   Hand: {fileID: 0}
   BattlePanel: {fileID: 0}
   Target: {fileID: 0}
   Enemy: {fileID: 0}
+  playedOnTurn: 0
   NumbersOfCardsInDeck: 0
   InBattleSpace: 0
   activated: 0
@@ -1329,8 +1340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ee46c4f47412845b9ff39d3c64143c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thiscard: {fileID: 0}
-  card: {fileID: 8433881700833631998}
   cardBack: {fileID: 8433881699970434106}
 --- !u!114 &1906349430497640374
 MonoBehaviour:
@@ -1344,7 +1353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac254e30ba59b42aeadbbe782e0ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandZone: {fileID: 8433881700833631998}
   It: {fileID: 8433881700833631998}
 --- !u!114 &-2259865119319607201
 MonoBehaviour:
@@ -1392,6 +1400,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
+--- !u!114 &4113629556822844054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433881700833631998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecd6bf8bb29494d9a1aa0c68f35456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 526145121082502983}
 --- !u!1 &8433881700836381009
 GameObject:
   m_ObjectHideFlags: 0
