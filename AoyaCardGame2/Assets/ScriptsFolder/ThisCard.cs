@@ -39,6 +39,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
 
     public bool Selected;
     public bool onBattleField;
+    public bool AttackedThisTurn;
 
     private CardBack cardBack;
 
@@ -50,31 +51,11 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
         //DeselectAllCards();
         //TODO: Deselect all cards
         SelectCard();
-
     }
 
     private void SelectCard()
     {
         Debug.Log("Selected");
-        /*if (!onBattleField)
-        {
-            Border.color = new Color(.16f, .16f, .16f);
-            return;
-        }
-
-        if (!activated)
-        {
-            Border.color = new Color(.92f, .08f, .08f);
-            return;
-        }
-
-        if (!Selected)
-        {
-            Border.color = new Color(.48f, .48f, .48f);
-            return;
-        }*/
-
-        Border.color = new Color(.12f, .96f, .16f);
         OnCardSelected?.Invoke();
     }
 
@@ -83,7 +64,6 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
         //Do color change
         OnCardDeselected?.Invoke();
     }
-
    
     void Start()
     {
@@ -112,14 +92,8 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
                 IsCardBack = true;
                 cardBack.ShowBack();
             }
-        }
-
-        BattlePanel = GameObject.Find("Panel");
-        if (this.transform.parent == BattlePanel.transform)
-        {
-            gameObject.GetComponent<DragCard>().enabled = false;
-        }
-
+        } 
+              
         thatImage.sprite = thisSprite;
         thatEffectImage.sprite = thisEffectSprite;
 
@@ -135,13 +109,45 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
             this.tag = "InHand";
         }
 
-        activated = (TurnEnum.CurrentTurn >= (playedOnTurn + (thisCard.CoolDown * 2)));
+    }
 
+    private void FixedUpdate()
+    {
+        if (transform.parent.tag == "Battlefield") {
+            InBattleSpace = true;
+            cardBack.ShowFront();
+        }
+        activated = (TurnEnum.CurrentTurn >= (playedOnTurn + (thisCard.CoolDown * 2)));
+        UpdateBorder();
+    }
+
+    private void UpdateBorder()
+    {
+        // Dark gray for hand cards.
+        if (!onBattleField) {
+            Border.color = new Color(.16f, .16f, .16f);
+            return;
+        }
+
+        // Light gray for inactive or already used cards.
+        if (!activated || AttackedThisTurn) {
+            Border.color = new Color(.48f, .48f, .48f);
+            return;
+        }
+
+        // Green for selected cards.
+        if (Selected) {
+            Border.color = new Color(.08f, .92f, .08f);
+            return;
+        }
+
+        // And red as a default, clickable state.
+        Border.color = new Color(.92f, .16f, .16f);
     }
 
     public void Play(int cardIdr)
     {
-        
+        // how does that work - i would have used Drag/Drop
     }
 
     public void UpdateCooldown(int amount)

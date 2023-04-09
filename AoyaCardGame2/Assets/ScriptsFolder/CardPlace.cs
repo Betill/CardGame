@@ -17,14 +17,13 @@ public class CardPlace : MonoBehaviour, IDropHandler , IPointerEnterHandler ,IPo
     // public GameObject[] CardsOnField;
     public void OnDrop(PointerEventData eventData)
     {
-        panel = GameObject.Find("Panel");
+        //panel = GameObject.Find("Panel");
         cardsOnBF = panel.transform.GetComponentsInChildren<ThisCard>();
         int i =this.transform.childCount;
         DragCard drag = eventData.pointerDrag.GetComponent<DragCard>();
         if (drag != null&&i <5)
         {
-          drag.parentToReturnTo = this.transform;
-
+            drag.parentToReturnTo = this.transform;
             foreach (ThisCard  item in cardsOnBF )
             {
                 if (item.thisCard.CoolDown ==0)

@@ -666,6 +666,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5545852804561179772, guid: b169335c66f9a594cb77a4be84f10b1b, type: 3}
+      propertyPath: handPanel
+      value: 
+      objectReference: {fileID: 1210846452}
+    - target: {fileID: 5545852804561179772, guid: b169335c66f9a594cb77a4be84f10b1b, type: 3}
+      propertyPath: humanPanel
+      value: 
+      objectReference: {fileID: 738021262}
+    - target: {fileID: 5545852804561179772, guid: b169335c66f9a594cb77a4be84f10b1b, type: 3}
+      propertyPath: robotPanel
+      value: 
+      objectReference: {fileID: 736839071}
     - target: {fileID: 5545852804561179773, guid: b169335c66f9a594cb77a4be84f10b1b, type: 3}
       propertyPath: m_Name
       value: EnemyGO
@@ -1068,7 +1080,7 @@ GameObject:
   - component: {fileID: 736839074}
   m_Layer: 0
   m_Name: EnemyPanel
-  m_TagString: Untagged
+  m_TagString: Battlefield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1249,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsOnBF: []
-  panel: {fileID: 0}
+  panel: {fileID: 738021261}
 --- !u!114 &738021266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,6 +2770,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366472145}
   m_CullTransparentMesh: 1
+--- !u!1 &1377700132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5545852804561179773, guid: b169335c66f9a594cb77a4be84f10b1b, type: 3}
+  m_PrefabInstance: {fileID: 326492432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1377700134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377700132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12e2501b288cc0d4e92c618a2fc07e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerName: Charles
+  MaxHP: 100
+  CurrentHP: 100
 --- !u!1 &1378790034
 GameObject:
   m_ObjectHideFlags: 0
