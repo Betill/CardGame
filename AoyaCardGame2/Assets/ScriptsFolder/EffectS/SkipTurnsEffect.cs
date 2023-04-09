@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SkipTurnsEffect : IEffect
+{
+    private TurnsController turnsController;
+    private int numberOfTurnsToSkip;
+
+    public SkipTurnsEffect(TurnsController turnsController, int numberOfTurnsToSkip)
+    {
+        this.turnsController = turnsController;
+        this.numberOfTurnsToSkip = numberOfTurnsToSkip;
+    }
+
+    public void applyEffect()
+    {
+        for(int i = 0; i < numberOfTurnsToSkip; i++)
+        {
+            turnsController.NextTurn();
+            turnsController.NextTurn();
+        }
+    }
+}

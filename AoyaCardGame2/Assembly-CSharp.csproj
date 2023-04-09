@@ -84,6 +84,12 @@
     <Compile Include="Assets\ScriptsFolder\EnemyScript.cs" />
     <Compile Include="Assets\ScriptsFolder\EffectS\EffectController.cs" />
     <Compile Include="Assets\ScriptsFolder\PlayerDeck.cs" />
+    <Compile Include="Assets\ScriptsFolder\EffectS\HealEffect.cs" />
+    <Compile Include="Assets\ScriptsFolder\UI\PlayerHealthUI.cs" />
+    <Compile Include="Assets\ScriptsFolder\EffectS\PowerBoostEffect.cs" />
+    <Compile Include="Assets\ScriptsFolder\EffectS\SkipTurnsEffect.cs" />
+    <Compile Include="Assets\ScriptsFolder\TurnsController.cs" />
+    <Compile Include="Assets\ScriptsFolder\UI\TurnsControllerUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\UI Elements\White\astext.txt" />

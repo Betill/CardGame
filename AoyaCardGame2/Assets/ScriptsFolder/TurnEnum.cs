@@ -81,13 +81,13 @@ public class TurnEnum : MonoBehaviour
 
     IEnumerator StartBattle()
     {
-        GameObject PlayerGO = Instantiate(GOPlayer, PlayerBattleStation);
+        /*GameObject PlayerGO = Instantiate(GOPlayer, PlayerBattleStation);
         PlayerReference  =  PlayerGO.GetComponent<PlayerScript>();
         HealthTextPlayer.text = PlayerReference.CurrentHP.ToString();// iniciazace krev hrace
 
         GameObject EnemyGO = Instantiate(GOEnemy, EnemyBattleStation);
         EnemyReference = EnemyGO.GetComponent<EnemyScript>();
-        HealthTextEnemy.text = EnemyReference.CurrentHP.ToString();
+        HealthTextEnemy.text = EnemyReference.CurrentHP.ToString();*/
 
        // PhaseText.text = StateOfBattle.ToString ();
         IsPlayerTurn = true;

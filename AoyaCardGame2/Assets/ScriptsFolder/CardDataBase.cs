@@ -10,8 +10,18 @@ public class CardDataBase: MonoBehaviour
     {
         List<IEffect> testEffects = new List<IEffect>();
         PlayerDeck playerDeck = GameObject.Find("PlayerDeck").GetComponent<PlayerDeck>();
-        testEffects.Add(new DrawCardsEffect(playerDeck, 2));
+        PlayerScript playerScript = GameObject.Find("PlayerGO").GetComponent<PlayerScript>();
+        CardPlace cardPlace = GameObject.Find("Panel").GetComponent<CardPlace>();
 
+        testEffects.Add(new DrawCardsEffect(playerDeck, 2));
+        testEffects.Add(new HealEffect(playerScript,10));
+
+        List<IEffect> testEffects2 = new List<IEffect>();
+
+        Card card8 = new Card(8, "Power Boost", 3, 2, 2, Resources.Load<Sprite>("PowerBoostPixelImage"), Resources.Load<Sprite>("PowerBoostEffectImage"), testEffects);
+        card8.Effects.Add(new PowerBoostEffect(cardPlace, card8));
+
+        cardList.Add(card8);
 
         cardList.Add(new Card(0, "Crystal", 0, 1,1, Resources.Load <Sprite >("CrystalPixelImage"),Resources.Load<Sprite>("AccelationEffectImage"),testEffects)) ;
         cardList.Add(new Card(1, "Pure Crystal", 0, 1, 2,Resources.Load<Sprite>("PureCrystalPixelImage"), Resources.Load<Sprite>("BigAccelationEffectImage"), testEffects));
@@ -22,7 +32,7 @@ public class CardDataBase: MonoBehaviour
            cardList.Add(new Card(5, "Speed Boost", 1, 2, 0,Resources.Load<Sprite>("SpeedBoostPixelImage"), Resources.Load<Sprite>("SpeedBoostEffectImage"), testEffects));
           cardList.Add(new Card(6, "Shield", 1, 6, 4,Resources.Load<Sprite>("ShieldPixelImage"), Resources.Load<Sprite>("ShieldEffectImage"), testEffects));
           cardList.Add(new Card(7, "Healer", 0, 4, 2,Resources.Load<Sprite>("HealerPixelImage"), Resources.Load<Sprite>("HealerEffectImage"), testEffects));
-          cardList.Add(new Card(8, "Power Boost", 3, 2, 2,Resources.Load<Sprite>("PowerBoostPixelImage"), Resources.Load<Sprite>("PowerBoostEffectImage"), testEffects));
+          //cardList.Add(new Card(8, "Power Boost", 3, 2, 2,Resources.Load<Sprite>("PowerBoostPixelImage"), Resources.Load<Sprite>("PowerBoostEffectImage"), testEffects));
           cardList.Add(new Card(9, "Double Attack", 2, 3, 2,Resources.Load<Sprite>("DoubleAttackPixelImage"), Resources.Load<Sprite>("DoubleAttackEffectImage"), testEffects));
           cardList.Add(new Card(10, "Return", 3, 1, 4,Resources.Load<Sprite>("ReturnFromGraveyardPixelImage"), Resources.Load<Sprite>("ReturnFromGraveyardEffectImage"), testEffects));
          cardList.Add(new Card(11, "Water", 1, 5, 2,Resources.Load<Sprite>("WaterPixelImage"), Resources.Load<Sprite>("NoneEffectImage"), testEffects));

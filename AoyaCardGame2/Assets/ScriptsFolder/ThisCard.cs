@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class ThisCard : MonoBehaviour, IPointerClickHandler 
 {
-    public int id;
     public Card thisCard;
 
     public Sprite thisSprite;
@@ -88,9 +87,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
    
     void Start()
     {
-        thisCard = PlayerDeck.deck[id];
         cardBack = GetComponent<CardBack>();
-        NumbersOfCardsInDeck = PlayerDeck.deckSize;
         Enemy = GameObject.Find("EnemyGO(Clone)");
 
         activated = false;
@@ -131,10 +128,9 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
 
         if (this.tag == "Clone")
         {
-            thisCard = PlayerDeck.deck[NumbersOfCardsInDeck - 1];
+            //thisCard = PlayerDeck.deck[NumbersOfCardsInDeck - 1];
 
-            NumbersOfCardsInDeck -= 1;
-            PlayerDeck.deckSize -= 1;
+            //PlayerDeck.deckSize -= 1;
             IsCardBack = false;
             this.tag = "InHand";
         }
@@ -146,6 +142,11 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
     public void Play(int cardIdr)
     {
         
+    }
+
+    public void UpdateCooldown(int amount)
+    {
+        thisCard.CoolDown = Mathf.Clamp(thisCard.CoolDown + amount, 0, 100);
     }
 
     //public static void DeselectAllCards()

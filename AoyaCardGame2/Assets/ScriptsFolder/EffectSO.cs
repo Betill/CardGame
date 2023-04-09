@@ -7,7 +7,7 @@ abstract public class EffectSO :ScriptableObject
    public  abstract void Effect(GameObject  GOCardWithEffect);
 }
 
-[CreateAssetMenu (fileName = "CrystalEffect", menuName ="Effects/AllEffects")]
+/*[CreateAssetMenu (fileName = "CrystalEffect", menuName ="Effects/AllEffects")]
 class CrystalEffect : EffectSO
 {
     
@@ -149,4 +149,4 @@ class NoneEffect : EffectSO
         // does not contains effect 
     }
 }
-
+*/
