@@ -9,7 +9,9 @@ public class DragCard : MonoBehaviour, IBeginDragHandler ,IDragHandler,IEndDragH
     public Transform parentToReturnTo = null;
     public Transform placeholderParent = null;
 
-    GameObject originalPlace = null;
+    public GameObject originalPlace = null;
+
+    public static ThisCard currentCard;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -29,9 +31,12 @@ public class DragCard : MonoBehaviour, IBeginDragHandler ,IDragHandler,IEndDragH
         placeholderParent = parentToReturnTo;
         this.transform.SetParent(this.transform.parent.parent);
 
-     // GetComponent<CanvasGroup>().blocksRaycasts = false;
+        ThisCard card = eventData.pointerDrag.GetComponent<ThisCard>();
+        currentCard = card;
 
-      //  this.transform.SetParent ( this.transform.parent.parent );
+        // GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        //  this.transform.SetParent ( this.transform.parent.parent );
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
@@ -71,6 +76,7 @@ public class DragCard : MonoBehaviour, IBeginDragHandler ,IDragHandler,IEndDragH
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         GetComponent<ThisCard>().onBattleField = true;
         GetComponent<ThisCard>().playedOnTurn = TurnEnum.CurrentTurn;
+        currentCard = null;
 
         Destroy(originalPlace);
     }  

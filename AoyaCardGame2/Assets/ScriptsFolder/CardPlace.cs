@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-public class CardPlace : MonoBehaviour, IDropHandler , IPointerEnterHandler ,IPointerExitHandler 
-
-    
+public class CardPlace : MonoBehaviour, IDropHandler, IPointerEnterHandler ,IPointerExitHandler     
 {
     public ThisCard [] cardsOnBF;
     public GameObject panel;
+
     private void Start()
     {
         //BattleFiledManager.Instance.TriggerEventListener("CardPlaced");
@@ -35,6 +34,8 @@ public class CardPlace : MonoBehaviour, IDropHandler , IPointerEnterHandler ,IPo
         }
 
     }
+
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -66,10 +67,4 @@ public class CardPlace : MonoBehaviour, IDropHandler , IPointerEnterHandler ,IPo
             
         }
     }
-
-   
-
-
-
-
 }

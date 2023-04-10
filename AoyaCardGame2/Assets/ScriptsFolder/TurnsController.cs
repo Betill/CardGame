@@ -58,6 +58,7 @@ public class TurnsController : MonoBehaviour
             foreach (ThisCard card in cardsOnBF)
             {
                 card.UpdateCooldown(-1);
+                card.AttackedThisTurn = false;
             }
         }
         

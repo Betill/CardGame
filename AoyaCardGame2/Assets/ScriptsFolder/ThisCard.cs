@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ThisCard : MonoBehaviour, IPointerClickHandler 
+public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
 {
     public Card thisCard;
 
@@ -24,6 +24,8 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
 
     public bool IsCardBack;
     public bool IsPlayerCard;
+
+    public int health;
   //   public static bool IsCardBackStatic;
    // CardBack CardBackScript;
 
@@ -72,8 +74,10 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
 
         activated = false;
         InBattleSpace = false;
+
         thisSprite = thisCard.ThisImage;
         thisEffectSprite = thisCard.EffectImage;
+        health = thisCard.Health;
 
         nameText.text = "" + thisCard.CardName;
         attackText.text = "" + thisCard.AttackPower.ToString();
@@ -112,7 +116,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
     private void FixedUpdate()
     {
         if (transform.parent.tag == "Battlefield") {
-            InBattleSpace = true;
+            onBattleField = true;
             cardBack.ShowFront();
         }
         activated = (TurnEnum.CurrentTurn >= (playedOnTurn + (thisCard.CoolDown * 2)));
@@ -151,6 +155,60 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
     public void UpdateCooldown(int amount)
     {
         thisCard.CoolDown = Mathf.Clamp(thisCard.CoolDown + amount, 0, 100);
+    }
+
+    public void UpdateHealth()
+    {
+
+    }
+
+    public void Attack(ThisCard target)
+    {
+        Debug.Log(nameText.text + " attacks " + target.nameText.text + "!");
+        AttackedThisTurn = true;
+        int enemyDamage = target.thisCard.AttackPower;
+        target.Hit(thisCard.AttackPower);        
+        Hit(enemyDamage);
+    }
+
+    public void Hit(int amount)
+    {
+        health -= amount;
+        if (health <= 0) {
+            // remove the placeholder card from battlefield in case this card dies.
+            DragCard drag = GetComponent<DragCard>();
+            if (drag != null && drag.originalPlace != null) {
+                Destroy(drag.originalPlace);
+            }
+            // also kill the card itself
+            Destroy(gameObject);
+        } else {
+            // if we did not die, just update health text
+            healthText.text = health.ToString();
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        // drag and drop attack handling        
+        if (!onBattleField)
+            return;
+
+        // only allow during player turn
+        if (TurnsController.instance.CurrentTurn != 0)
+            return;
+
+        ThisCard card = DragCard.currentCard;
+        if (card != null) {
+            // do all legality checks.
+            if (
+                    card.IsPlayerCard && 
+                    card.onBattleField &&
+                    card.activated &&
+                    !card.AttackedThisTurn) {
+                card.Attack(this);
+            }
+        }
     }
 
     //public static void DeselectAllCards()

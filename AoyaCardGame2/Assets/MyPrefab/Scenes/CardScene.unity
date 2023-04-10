@@ -1884,7 +1884,7 @@ GameObject:
   - component: {fileID: 738021267}
   m_Layer: 0
   m_Name: Panel
-  m_TagString: PlayerBF
+  m_TagString: Battlefield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_Spacing: 60
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
