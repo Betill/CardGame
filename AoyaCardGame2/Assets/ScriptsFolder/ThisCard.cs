@@ -97,8 +97,6 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler
         thatImage.sprite = thisSprite;
         thatEffectImage.sprite = thisEffectSprite;
 
-        //  IsCardBackStatic = IsCardBack;
-        // CardBackScript.UpdateCard(IsCardBack);
 
         if (this.tag == "Clone")
         {

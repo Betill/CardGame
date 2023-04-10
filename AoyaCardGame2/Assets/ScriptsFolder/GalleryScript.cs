@@ -8,13 +8,12 @@ public class GalleryScript : MonoBehaviour
 {
     public Button NextButton;
     public Button LastButton;
-    public int ImageIndex;
-    public Sprite[] sprites;
-    public Sprite MySprite;
+    public int ImageIndex =0;
+    public RawImage rawImage;
+    public Texture[] tex;
     private void Update()
     {
-
-        MySprite = sprites[ImageIndex];
+        rawImage.texture = tex[ImageIndex]; 
 
         if (ImageIndex <=0)
         {
@@ -25,9 +24,9 @@ public class GalleryScript : MonoBehaviour
         {
             LastButton.gameObject.SetActive(true);
         }
-        if (ImageIndex >= sprites.Length -1)
+        if (ImageIndex >= tex .Length -1)
         {
-            ImageIndex = sprites.Length - 1;
+            ImageIndex = tex.Length - 1;
             NextButton.gameObject.SetActive(false);
         }
         else

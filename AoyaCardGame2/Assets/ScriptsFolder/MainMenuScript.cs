@@ -5,18 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-  public void LoadBattleSceneNormal()
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+    private void Update()
+    {
+        
+    }
+    public void LoadBattleSceneNormal()
     {
         SceneManager.LoadScene("CardScene");
     }
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+        SceneManager.LoadScene("StartMenu");
+        Time.timeScale = 1f;
     }
 
     public void ToGallery()
     {
         SceneManager.LoadScene("Gallery");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Game quit");
+        Application.Quit();
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - InHand
   - PlayerBF
   - EffectController
+  - Battlefield
+  - Enemy
   layers:
   - Default
   - TransparentFX
