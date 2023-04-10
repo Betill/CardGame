@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class PlayerScript : MonoBehaviour
 {
-
     public string PlayerName;
     public int MaxHP;
     public int CurrentHP;

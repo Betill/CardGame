@@ -16,12 +16,15 @@ public class TurnsController : MonoBehaviour
     public CardPlace EnemyBattleField;
     private CardPlace CurrentBattleField;
 
+    public static TurnsController instance;
+
     public static UnityAction<int, int> OnBeginTurn;
     public static UnityAction<int> OnEndTurn;
 
-
     private void Start()
     {
+        instance = this;
+
         //Choose random turn no begin (player or enemy)
         //Wait for cards to be dealt before playing
         PlayerDeck.DrawCard(5);
@@ -55,6 +58,7 @@ public class TurnsController : MonoBehaviour
             foreach (ThisCard card in cardsOnBF)
             {
                 card.UpdateCooldown(-1);
+                card.AttackedThisTurn = false;
             }
         }
         
@@ -62,6 +66,4 @@ public class TurnsController : MonoBehaviour
         TurnsCount++;
         OnEndTurn?.Invoke(CurrentTurn);
     }
-
-
 }

@@ -5,16 +5,21 @@ using UnityEngine;
 public class HealEffect : IEffect
 {
     PlayerScript player;
+    PlayerScript enemy;
     public int healAmount;
 
-    public HealEffect(PlayerScript player, int healAmount)
+    public HealEffect(PlayerScript player, PlayerScript enemy, int healAmount)
     {
         this.player = player;
+        this.enemy = enemy;
         this.healAmount = healAmount;
     }
 
-    public void applyEffect()
+    public void applyEffect(ThisCard target)
     {
-        player.UpdateHP(healAmount);
+        if (target.IsPlayerCard)
+            player.UpdateHP(healAmount);
+        else
+            enemy.UpdateHP(healAmount);
     }
 }

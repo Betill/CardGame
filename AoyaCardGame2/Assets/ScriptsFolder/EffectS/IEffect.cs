@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEffect
 {
-    public void applyEffect();
+    public void applyEffect(ThisCard target = null);
 }

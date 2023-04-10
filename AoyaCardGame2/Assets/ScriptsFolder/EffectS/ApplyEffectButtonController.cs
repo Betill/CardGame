@@ -8,6 +8,7 @@ public class ApplyEffectButtonController : MonoBehaviour
     private ThisCard thisCard;
     private Button button;
     private EffectController effectController;
+
     private void Awake()
     {
         thisCard = GetComponentInParent<ThisCard>();

@@ -13,7 +13,7 @@ public class SkipTurnsEffect : IEffect
         this.numberOfTurnsToSkip = numberOfTurnsToSkip;
     }
 
-    public void applyEffect()
+    public void applyEffect(ThisCard target)
     {
         for(int i = 0; i < numberOfTurnsToSkip; i++)
         {
