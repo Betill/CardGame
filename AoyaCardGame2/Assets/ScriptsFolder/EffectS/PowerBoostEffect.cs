@@ -13,7 +13,7 @@ public class PowerBoostEffect : IEffect
         this.card = card;
     }
 
-    public void applyEffect()
+    public void applyEffect(ThisCard target)
     {
         card.AttackPower += cardPlace.cardsOnBF.Length;
     }
