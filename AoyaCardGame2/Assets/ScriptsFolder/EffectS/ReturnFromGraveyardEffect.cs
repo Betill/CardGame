@@ -7,6 +7,8 @@ public class ReturnFromGraveyardEffect : IEffect
     private Card card;
     private PlayerDeck playerDeck;
 
+    public bool isGoodEffect => true;
+
     public ReturnFromGraveyardEffect(Card card, PlayerDeck playerDeck)
     {
         this.card = card;

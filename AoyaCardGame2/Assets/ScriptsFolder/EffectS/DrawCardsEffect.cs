@@ -6,6 +6,8 @@ public class DrawCardsEffect : IEffect
     private PlayerDeck enemyDeck;
     private int numberOfCards;
 
+    public bool isGoodEffect => true;
+
     public DrawCardsEffect(PlayerDeck playerDeck, PlayerDeck enemyDeck, int numberOfCards)
     {
         this.playerDeck = playerDeck;

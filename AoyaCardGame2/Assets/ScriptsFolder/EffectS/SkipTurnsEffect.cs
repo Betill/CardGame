@@ -7,6 +7,8 @@ public class SkipTurnsEffect : IEffect
     private TurnsController turnsController;
     private int numberOfTurnsToSkip;
 
+    public bool isGoodEffect => true;
+
     public SkipTurnsEffect(TurnsController turnsController, int numberOfTurnsToSkip)
     {
         this.turnsController = turnsController;

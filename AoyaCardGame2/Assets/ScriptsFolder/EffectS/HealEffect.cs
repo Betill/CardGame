@@ -8,6 +8,8 @@ public class HealEffect : IEffect
     PlayerScript enemy;
     public int healAmount;
 
+    public bool isGoodEffect => true;
+
     public HealEffect(PlayerScript player, PlayerScript enemy, int healAmount)
     {
         this.player = player;

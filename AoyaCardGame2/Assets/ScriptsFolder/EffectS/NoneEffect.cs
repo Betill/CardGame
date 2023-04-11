@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class NoneEffect : IEffect
 {
+    public bool isGoodEffect => true;
+
     public void applyEffect(ThisCard target)
     {
         return;
     }
-
 }

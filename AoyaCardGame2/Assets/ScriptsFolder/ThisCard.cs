@@ -44,6 +44,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
     public bool Selected;
     public bool onBattleField;
     public bool AttackedThisTurn;
+    public bool EffectUsed;
 
     private CardBack cardBack;
 
@@ -223,8 +224,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
 
     public static bool CanAttack(ThisCard card)
     {
-        return  card.IsPlayerCard &&
-                card.onBattleField &&
+        return  card.onBattleField &&
                 card.activated &&
                 !card.AttackedThisTurn;
     }

@@ -6,6 +6,7 @@ public class AttackFromHandEffect : IEffect
 {
     private Card card;
     //Reference to the enemy (not card)
+    public bool isGoodEffect => false;
 
     public AttackFromHandEffect(Card card)
     {

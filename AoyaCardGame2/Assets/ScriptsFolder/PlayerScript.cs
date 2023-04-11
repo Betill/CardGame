@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour, IDropHandler
                 Debug.Log("you lost!");
             else
                 Debug.Log("you won!");
-            SceneManager.LoadScene("startmenu");
+            SceneManager.LoadScene("StartMenu");
         }
     }
 

@@ -1246,7 +1246,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 784.4, y: 222}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 180, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8433881700833631971
 CanvasRenderer:
@@ -1298,7 +1298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7172ce881f1d76a4eb6cd040908c180e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   thisCard:
     ID: 0
     CardName: 
@@ -1318,6 +1317,8 @@ MonoBehaviour:
   thatEffectImage: {fileID: 8433881699733790933}
   IsCardBack: 0
   IsPlayerCard: 0
+  health: 0
+  coolDown: 0
   Hand: {fileID: 0}
   BattlePanel: {fileID: 0}
   Target: {fileID: 0}
@@ -1328,6 +1329,9 @@ MonoBehaviour:
   activated: 0
   Selected: 0
   onBattleField: 0
+  AttackedThisTurn: 0
+  EffectUsed: 0
+  Graveyard: {fileID: 0}
 --- !u!114 &1720970077157069289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,6 +1404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
+  originalPlace: {fileID: 0}
 --- !u!114 &4113629556822844054
 MonoBehaviour:
   m_ObjectHideFlags: 0

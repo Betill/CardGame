@@ -1019,6 +1019,9 @@ MonoBehaviour:
   handPanel: {fileID: 1210846452}
   robotPanel: {fileID: 736839071}
   humanPanel: {fileID: 738021262}
+  robotScript: {fileID: 310317928}
+  playerScript: {fileID: 497911786}
+  difficulty: 100
 --- !u!114 &310317928
 MonoBehaviour:
   m_ObjectHideFlags: 0

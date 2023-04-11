@@ -20,7 +20,12 @@ public class ApplyEffectButtonController : MonoBehaviour
 
     private void ApplyEffects()
     {
-        effectController.applyCardEffects(thisCard.thisCard);
+        if (GetComponentInParent<ThisCard>().EffectUsed)
+            return;
+
+        Destroy(button.gameObject);
+        GetComponentInParent<ThisCard>().EffectUsed = true;
+        effectController.applyCardEffects(thisCard);
     }
 
 }
