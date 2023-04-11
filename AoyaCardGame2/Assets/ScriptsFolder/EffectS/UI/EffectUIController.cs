@@ -12,8 +12,7 @@ public class EffectUIController : MonoBehaviour
     {
         card = GetComponent<ThisCard>();
         card.OnCardSelected += ShowEffectButton;
-        card.OnCardDeselected += HideEffectButton;
-        
+        card.OnCardDeselected += HideEffectButton;        
     }
 
     private void ShowEffectButton()

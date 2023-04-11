@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
@@ -26,6 +27,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
     public bool IsPlayerCard;
 
     public int health;
+    public int coolDown;
   //   public static bool IsCardBackStatic;
    // CardBack CardBackScript;
 
@@ -59,14 +61,15 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
 
     private void SelectCard()
     {
-        Debug.Log("Selected");
-        OnCardSelected?.Invoke();
+        if (IsPlayerCard)
+            OnCardSelected?.Invoke();
     }
 
     private void DeselectCard()
     {
         //Do color change
-        OnCardDeselected?.Invoke();
+        if (IsPlayerCard)
+            OnCardDeselected?.Invoke();
     }
    
     void Start()
@@ -81,6 +84,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         thisSprite = thisCard.ThisImage;
         thisEffectSprite = thisCard.EffectImage;
         health = thisCard.Health;
+        coolDown = thisCard.CoolDown;
 
         nameText.text = "" + thisCard.CardName;
         attackText.text = "" + thisCard.AttackPower.ToString();
@@ -104,7 +108,6 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         thatImage.sprite = thisSprite;
         thatEffectImage.sprite = thisEffectSprite;
 
-
         if (this.tag == "Clone")
         {
             //thisCard = PlayerDeck.deck[NumbersOfCardsInDeck - 1];
@@ -122,7 +125,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
             onBattleField = true;
             cardBack.ShowFront();
         }
-        activated = (TurnEnum.CurrentTurn >= (playedOnTurn + (thisCard.CoolDown * 2)));
+        activated = coolDown <= 0; // (TurnsController.instance.TurnsCount >= (playedOnTurn + (thisCard.CoolDown * 2)));
         UpdateBorder();
     }
 
@@ -136,18 +139,18 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
 
         // Light gray for inactive or already used cards.
         if (!activated || AttackedThisTurn) {
-            Border.color = new Color(.48f, .48f, .48f);
+            Border.color = new Color(.92f, .32f, .24f);
             return;
         }
 
         // Green for selected cards.
         if (Selected) {
-            Border.color = new Color(.08f, .92f, .08f);
+            Border.color = new Color(.08f, .92f, .16f);
             return;
-        }
+        }        
 
         // And red as a default, clickable state.
-        Border.color = new Color(.92f, .16f, .16f);
+        Border.color = new Color(.92f, .92f, .92f);
     }
 
     public void Play(int cardIdr)
@@ -157,7 +160,8 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
 
     public void UpdateCooldown(int amount)
     {
-        thisCard.CoolDown = Mathf.Clamp(thisCard.CoolDown + amount, 0, 100);
+        coolDown = Math.Max(0, coolDown + amount);
+        cooldownText.text = coolDown.ToString();
     }
 
     public void UpdateHealth()
@@ -172,6 +176,12 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         int enemyDamage = target.thisCard.AttackPower;
         target.Hit(thisCard.AttackPower);        
         Hit(enemyDamage);
+    }
+
+    public void Attack(PlayerScript target)
+    {
+        AttackedThisTurn = true;
+        target.UpdateHP(-thisCard.AttackPower);        
     }
 
     public void Hit(int amount)
@@ -211,7 +221,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         }
     }
 
-    private bool CanAttack(ThisCard card)
+    public static bool CanAttack(ThisCard card)
     {
         return  card.IsPlayerCard &&
                 card.onBattleField &&

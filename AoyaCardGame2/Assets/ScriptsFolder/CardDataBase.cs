@@ -6,13 +6,13 @@ public class CardDataBase: MonoBehaviour
 {
     public static List<Card> cardList = new List<Card>();
 
+    public PlayerScript playerScript, enemyScript;
+
     public void Awake()
     {
         List<IEffect> testEffects = new List<IEffect>();
         PlayerDeck playerDeck = GameObject.Find("PlayerDeck").GetComponent<PlayerDeck>();
         PlayerDeck enemyDeck = GameObject.Find("EnemyDeck").GetComponent<PlayerDeck>();
-        PlayerScript playerScript = GameObject.Find("PlayerGO").GetComponent<PlayerScript>();
-        PlayerScript enemyScript = GameObject.Find("EnemyGO").GetComponent<PlayerScript>();
         CardPlace cardPlace = GameObject.Find("Panel").GetComponent<CardPlace>();
         TurnsController turnsController = GameObject.Find("TurnsController").GetComponent<TurnsController>();
 

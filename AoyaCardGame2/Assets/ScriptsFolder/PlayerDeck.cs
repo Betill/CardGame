@@ -146,6 +146,7 @@ deck[29] = CardDataBase.cardList[19];*/
 
         if (!IsPlayer)
         {
+            Destroy(obj.GetComponent<ApplyEffectButtonController>());
             Destroy(obj.GetComponent<DragCard>());
         }
     }

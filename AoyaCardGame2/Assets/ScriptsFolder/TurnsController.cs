@@ -25,6 +25,8 @@ public class TurnsController : MonoBehaviour
     {
         instance = this;
 
+        CurrentBattleField = PlayerBattleField;
+
         //Choose random turn no begin (player or enemy)
         //Wait for cards to be dealt before playing
         PlayerDeck.DrawCard(5);
@@ -52,7 +54,7 @@ public class TurnsController : MonoBehaviour
 
     private void EndTurn()
     {
-        if(CurrentBattleField != null)
+        if (CurrentBattleField != null)
         {
             ThisCard[] cardsOnBF = CurrentBattleField.cardsOnBF;
             foreach (ThisCard card in cardsOnBF)

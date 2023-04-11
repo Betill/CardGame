@@ -9,7 +9,7 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void Awake()
     {
-        PlayerScript.OnHPUpdated += UpdateHealthText;
+        //PlayerScript.OnHPUpdated += UpdateHealthText;
     }
 
     private void UpdateHealthText(int currentHealth)
