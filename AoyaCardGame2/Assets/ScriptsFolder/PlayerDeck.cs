@@ -87,6 +87,7 @@ deck[29] = CardDataBase.cardList[19];*/
         deck.Add(CardDataBase.cardList[15]);
         deck.Add(CardDataBase.cardList[19]);
 
+
         deckSize = deck.Count;
     }
 
@@ -128,16 +129,24 @@ deck[29] = CardDataBase.cardList[19];*/
             if (card == null) yield return null;
 
             yield return new WaitForSeconds(0.5f);
-            GameObject obj = Instantiate(CardToHand, transform.position, transform.rotation);
-            obj.GetComponent<CardInHandZone>().Play(Hand.transform);
-            obj.GetComponent<ThisCard>().IsPlayerCard = IsPlayer;
-            obj.GetComponent<ThisCard>().Hand = Hand;
-            obj.GetComponent<ThisCard>().thisCard = card;
-            hand.Add(obj.GetComponent<ThisCard>());
 
-            if (!IsPlayer) {
-                Destroy(obj.GetComponent<DragCard>());
-            }
+            AddCardToHand(card);
+            
+        }
+    }
+
+    public void AddCardToHand(Card card)
+    {
+        GameObject obj = Instantiate(CardToHand, transform.position, transform.rotation);
+        obj.GetComponent<CardInHandZone>().Play(Hand.transform);
+        obj.GetComponent<ThisCard>().IsPlayerCard = IsPlayer;
+        obj.GetComponent<ThisCard>().Hand = Hand;
+        obj.GetComponent<ThisCard>().thisCard = card;
+        hand.Add(obj.GetComponent<ThisCard>());
+
+        if (!IsPlayer)
+        {
+            Destroy(obj.GetComponent<DragCard>());
         }
     }
 

@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 52501544}
   - component: {fileID: 52501546}
   - component: {fileID: 52501545}
+  - component: {fileID: 52501547}
   m_Layer: 0
   m_Name: GravePlayer
   m_TagString: Untagged
@@ -431,6 +432,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52501543}
   m_CullTransparentMesh: 1
+--- !u!114 &52501547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52501543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630fbac08e1705b40b70e67c24b3c8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discardedCards: []
 --- !u!1 &57107076
 GameObject:
   m_ObjectHideFlags: 0

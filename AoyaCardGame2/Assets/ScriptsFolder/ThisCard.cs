@@ -47,6 +47,8 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
 
     public UnityAction OnCardSelected;
     public UnityAction OnCardDeselected;
+    public GraveyardController Graveyard;
+  
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -71,6 +73,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
     {
         cardBack = GetComponent<CardBack>();
         Enemy = GameObject.Find("EnemyGO(Clone)");
+        Graveyard = GameObject.Find("GravePlayer")?.GetComponent<GraveyardController>();
 
         activated = false;
         InBattleSpace = false;
@@ -181,6 +184,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
                 Destroy(drag.originalPlace);
             }
             // also kill the card itself
+            Graveyard.AddCardToGraveyard(thisCard, IsPlayerCard);
             Destroy(gameObject);
         } else {
             // if we did not die, just update health text
@@ -201,14 +205,18 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         ThisCard card = DragCard.currentCard;
         if (card != null) {
             // do all legality checks.
-            if (
-                    card.IsPlayerCard && 
-                    card.onBattleField &&
-                    card.activated &&
-                    !card.AttackedThisTurn) {
+            if (CanAttack(card)) {
                 card.Attack(this);
             }
         }
+    }
+
+    private bool CanAttack(ThisCard card)
+    {
+        return  card.IsPlayerCard &&
+                card.onBattleField &&
+                card.activated &&
+                !card.AttackedThisTurn;
     }
 
     //public static void DeselectAllCards()

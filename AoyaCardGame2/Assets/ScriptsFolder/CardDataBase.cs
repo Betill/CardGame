@@ -52,11 +52,13 @@ public class CardDataBase: MonoBehaviour
         card18.Effects.Add(new NoneEffect());
         card19.Effects.Add(new NoneEffect());
 
+        Card card2 = new Card(2, "Surprise", 2, 1, 1, Resources.Load<Sprite>("SurprisePixelImage"), Resources.Load<Sprite>("SurpriseEffectImage"), noneEffects);
+        card2.Effects.Add(new AttackFromHandEffect(card2));
+        cardList.Add(card2);
 
 
         cardList.Add(new Card(0, "Crystal", 0, 1,1, Resources.Load <Sprite >("CrystalPixelImage"),Resources.Load<Sprite>("AccelationEffectImage"),testEffects)) ;
         cardList.Add(new Card(1, "Pure Crystal", 0, 1, 2,Resources.Load<Sprite>("PureCrystalPixelImage"), Resources.Load<Sprite>("BigAccelationEffectImage"), testEffects));
-        cardList.Add(new Card(2, "Surprise", 2, 1, 1,Resources.Load <Sprite>("SurprisePixelImage"), Resources.Load<Sprite>("SurpriseEffectImage"), testEffects));
         cardList.Add(new Card(3, "Refill", 1, 1, 2, Resources.Load<Sprite>("RefillPixelImage"), Resources.Load<Sprite>("RefillEffectImage"), testEffects));
         cardList.Add(new Card(4, "Magnifier", 1, 1, 3,Resources.Load<Sprite>("MagnifierPixelImage"), Resources.Load<Sprite>("MagnifierEffectImage"), testEffects));
         cardList.Add(card5 );
