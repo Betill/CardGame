@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour, IDropHandler
     public int CurrentHP;
     public static UnityAction<int> OnHPUpdated;
     public bool isPlayer;
+    public GameObject WinScene;
 
     public Text healthText;
 
@@ -35,10 +36,17 @@ public class PlayerScript : MonoBehaviour, IDropHandler
         healthText.text = CurrentHP.ToString();
         if (CurrentHP <= 0) {
             if (isPlayer)
+            {
                 Debug.Log("you lost!");
+                WinScene.SetActive(true);
+                WinScene.GetComponentInChildren<Text>().text = "You Lose!";
+            }
             else
+            {
                 Debug.Log("you won!");
-            SceneManager.LoadScene("StartMenu");
+                WinScene.SetActive(true);
+            }
+             
         }
     }
 

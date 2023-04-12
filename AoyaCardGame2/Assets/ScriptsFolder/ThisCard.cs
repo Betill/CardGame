@@ -122,6 +122,9 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
 
     private void FixedUpdate()
     {
+        // hotfix, don't touch it
+        GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 120);
+
         if (transform.parent.tag == "Battlefield") {
             onBattleField = true;
             cardBack.ShowFront();

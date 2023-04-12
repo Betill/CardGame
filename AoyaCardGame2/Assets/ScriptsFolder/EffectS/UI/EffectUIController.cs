@@ -17,12 +17,18 @@ public class EffectUIController : MonoBehaviour
 
     private void ShowEffectButton()
     {
+        if (GetComponentInParent<ThisCard>().EffectUsed)
+            return;
+
         Debug.Log("Showed");
         button.gameObject.SetActive(true);
     }
 
     private void HideEffectButton()
     {
+        if (GetComponentInParent<ThisCard>().EffectUsed)
+            return;
+
         button.gameObject.SetActive(false);
     }
 }

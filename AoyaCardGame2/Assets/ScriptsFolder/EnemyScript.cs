@@ -62,7 +62,8 @@ public class EnemyScript : MonoBehaviour
             if (robotScript.CurrentHP < 20) {
                 myCards.AddRange(hand);
                 foreach (var c in myCards) {
-                    if (c.thisCard.CardName == "Healer") {
+                    if (c.thisCard.CardName == "Healer" && !c.EffectUsed) {
+                        c.EffectUsed = true;
                         c.thisCard.Effects.ForEach(e => e.applyEffect(c));
                         return;
                     }

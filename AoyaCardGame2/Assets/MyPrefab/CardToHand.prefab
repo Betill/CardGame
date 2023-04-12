@@ -1373,11 +1373,11 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 0
-  m_PreferredHeight: 0
+  m_PreferredWidth: 120
+  m_PreferredHeight: -1
   m_FlexibleWidth: 120
   m_FlexibleHeight: 200
-  m_LayoutPriority: 1
+  m_LayoutPriority: 100
 --- !u!225 &146639250987504812
 CanvasGroup:
   m_ObjectHideFlags: 0
