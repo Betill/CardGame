@@ -44,7 +44,8 @@ public class PauseScript : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
-       
+
+        SceneManager.UnloadSceneAsync("CardScene");
         SceneManager.LoadScene("StartMenu");
         IsPaused = false;
     }

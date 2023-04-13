@@ -19,8 +19,8 @@ public class SkipTurnsEffect : IEffect
     {
         for(int i = 0; i < numberOfTurnsToSkip; i++)
         {
-            turnsController.NextTurn();
-            turnsController.NextTurn();
+            TurnsController.instance.NextTurn();
+            TurnsController.instance.NextTurn();
         }
     }
 }

@@ -21,11 +21,17 @@ public class EnemyScript : MonoBehaviour
     private float waitingTime;
 
     [Tooltip("Difficulty from 0 to 100")]
-    public float difficulty = 50f;
+    public static float difficulty = 50f;
 
     void Start()
     {
-        
+        Debug.Log("Difficulty: " + difficulty);
+        robotScript.CurrentHP = difficulty < 80 ? 20 : 30;
+    }
+
+    public static void setDifficulty(float difficulty)
+    {
+        EnemyScript.difficulty = difficulty;
     }
 
     void FixedUpdate()

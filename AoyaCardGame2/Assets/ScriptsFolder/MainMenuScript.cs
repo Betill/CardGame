@@ -13,15 +13,23 @@ public class MainMenuScript : MonoBehaviour
     {
         
     }
+
     public void LoadBattleSceneNormal()
     {
-        SceneManager.LoadScene("CardScene");
+        EnemyScript.difficulty = 60f;
+        SceneManager.LoadScene("CardScene", LoadSceneMode.Single);
+    }
+
+    public void LoadBattleSceneHard()
+    {
+        EnemyScript.difficulty = 100f;
+        SceneManager.LoadScene("CardScene", LoadSceneMode.Single);
     }
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene("StartMenu");
         Time.timeScale = 1f;
+        SceneManager.LoadScene("StartMenu", LoadSceneMode.Single);
     }
 
     public void ToGallery()
