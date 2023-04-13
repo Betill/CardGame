@@ -15,6 +15,8 @@ public class CardDataBase: MonoBehaviour
         PlayerDeck enemyDeck = GameObject.Find("EnemyDeck").GetComponent<PlayerDeck>();
         CardPlace cardPlace = GameObject.Find("Panel").GetComponent<CardPlace>();
         TurnsController turnsController = GameObject.Find("TurnsController").GetComponent<TurnsController>();
+        GraveyardController graveyard = GameObject.Find("Graveyard").GetComponent<GraveyardController>();
+
 
         List<IEffect> testEffects2 = new List<IEffect>();
         List<IEffect> noneEffects = new List<IEffect>();
@@ -49,6 +51,11 @@ public class CardDataBase: MonoBehaviour
         card18.Effects.Add(new NoneEffect());
         card19.Effects.Add(new NoneEffect());
 
+        Card returnCard = new Card(10, "Return", 3, 1, 4, Resources.Load<Sprite>("ReturnFromGraveyardPixelImage"), Resources.Load<Sprite>("ReturnFromGraveyardEffectImage"), noneEffects);
+        returnCard.Effects = new List<IEffect>();
+        returnCard.Effects.Add(new ReturnFromGraveyardEffect(returnCard, graveyard));
+        cardList.Add(returnCard);
+
         Card card2 = new Card(2, "Surprise", 2, 1, 1, Resources.Load<Sprite>("SurprisePixelImage"), Resources.Load<Sprite>("SurpriseEffectImage"), noneEffects);
         card2.Effects.Add(new AttackFromHandEffect(card2));
         cardList.Add(card2);
@@ -75,7 +82,10 @@ public class CardDataBase: MonoBehaviour
         //cardList.Add(new Card(8, "Power Boost", 3, 2, 2,Resources.Load<Sprite>("PowerBoostPixelImage"), Resources.Load<Sprite>("PowerBoostEffectImage"), testEffects));
 
         cardList.Add(new Card(9, "Double Attack", 2, 3, 2,Resources.Load<Sprite>("DoubleAttackPixelImage"), Resources.Load<Sprite>("DoubleAttackEffectImage"), noneEffects));
-        cardList.Add(new Card(10, "Return", 3, 1, 4,Resources.Load<Sprite>("ReturnFromGraveyardPixelImage"), Resources.Load<Sprite>("ReturnFromGraveyardEffectImage"), noneEffects));
+        //cardList.Add(new Card(10, "Return", 3, 1, 4,Resources.Load<Sprite>("ReturnFromGraveyardPixelImage"), Resources.Load<Sprite>("ReturnFromGraveyardEffectImage"), noneEffects));
+
+
+
         cardList.Add(card11);
         cardList.Add(card12);
         cardList.Add(card13);

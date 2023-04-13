@@ -5,18 +5,19 @@ using UnityEngine;
 public class ReturnFromGraveyardEffect : IEffect
 {
     private Card card;
-    private PlayerDeck playerDeck;
+    private GraveyardController graveyardController;
 
     public bool isGoodEffect => true;
 
-    public ReturnFromGraveyardEffect(Card card, PlayerDeck playerDeck)
+    public ReturnFromGraveyardEffect(Card card, GraveyardController graveyardController)
     {
         this.card = card;
-        this.playerDeck = playerDeck;
+        this.graveyardController = graveyardController;
     }
 
     public void applyEffect(ThisCard target = null)
     {
-        playerDeck.AddCardToHand(card);
+        graveyardController.RemoveCardFromGraveyard(card.ID, !target.IsPlayerCard);
+        
     }
 }

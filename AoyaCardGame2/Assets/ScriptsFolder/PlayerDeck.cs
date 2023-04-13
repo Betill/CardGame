@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Diagnostics;
 
@@ -29,46 +30,45 @@ public class PlayerDeck : MonoBehaviour
         loadDeckData();
         publicShuffleDeck();
         HasCard = true;
+        GraveyardController.OnCardRemovedFromGraveyard += ReturnCardFromGraveyardToHand;
         //DrawCard(5);
     }
 
     private void loadDeckData()
     {
-       
-        deck.Add(CardDataBase.cardList[0]);
-        deck.Add(CardDataBase.cardList[0]);
-        deck.Add(CardDataBase.cardList[1]);
-        deck.Add(CardDataBase.cardList[1]);
-        deck.Add(CardDataBase.cardList[2]);
-        deck.Add(CardDataBase.cardList[2]);
-        deck.Add(CardDataBase.cardList[3]);
-        deck.Add(CardDataBase.cardList[3]);
-        deck.Add(CardDataBase.cardList[3]);
-        deck.Add(CardDataBase.cardList[4]);
-        deck.Add(CardDataBase.cardList[4]);
+        
+         deck.Add(CardDataBase.cardList[0]);
+         deck.Add(CardDataBase.cardList[0]);
+         deck.Add(CardDataBase.cardList[1]);
+         deck.Add(CardDataBase.cardList[1]);
+         deck.Add(CardDataBase.cardList[2]);
+         deck.Add(CardDataBase.cardList[2]);
+         deck.Add(CardDataBase.cardList[3]);
+         deck.Add(CardDataBase.cardList[3]);
+         deck.Add(CardDataBase.cardList[3]);
+         deck.Add(CardDataBase.cardList[4]);
+         deck.Add(CardDataBase.cardList[4]);
+         deck.Add(CardDataBase.cardList[5]);
         deck.Add(CardDataBase.cardList[5]);
-       deck.Add(CardDataBase.cardList[5]);
-        deck.Add(CardDataBase.cardList[6]);
-        deck.Add(CardDataBase.cardList[6]);
-        deck.Add(CardDataBase.cardList[7]);
-        deck.Add(CardDataBase.cardList[8]);
-        deck.Add(CardDataBase.cardList[9]);
-        deck.Add(CardDataBase.cardList[7]);
-        deck.Add(CardDataBase.cardList[8]);
-        deck.Add(CardDataBase.cardList[9]);
-        deck.Add(CardDataBase.cardList[10]);
-        deck.Add(CardDataBase.cardList[11]);
-        deck.Add(CardDataBase.cardList[12]);
-        deck.Add(CardDataBase.cardList[13]);
-        deck.Add(CardDataBase.cardList[14]);
-        deck.Add(CardDataBase.cardList[15]);
-        deck.Add(CardDataBase.cardList[15]);
-        deck.Add(CardDataBase.cardList[16]);
-        deck.Add(CardDataBase.cardList[17]);
-        deck.Add(CardDataBase.cardList[18]);
-        deck.Add(CardDataBase.cardList[19]); 
-
-
+         deck.Add(CardDataBase.cardList[6]);
+         deck.Add(CardDataBase.cardList[6]);
+         deck.Add(CardDataBase.cardList[7]);
+         deck.Add(CardDataBase.cardList[8]);
+         deck.Add(CardDataBase.cardList[9]);
+         deck.Add(CardDataBase.cardList[7]);
+         deck.Add(CardDataBase.cardList[8]);
+         deck.Add(CardDataBase.cardList[9]);
+         deck.Add(CardDataBase.cardList[10]);
+         deck.Add(CardDataBase.cardList[11]);
+         deck.Add(CardDataBase.cardList[12]);
+         deck.Add(CardDataBase.cardList[13]);
+         deck.Add(CardDataBase.cardList[14]);
+         deck.Add(CardDataBase.cardList[15]);
+         deck.Add(CardDataBase.cardList[15]);
+         deck.Add(CardDataBase.cardList[16]);
+         deck.Add(CardDataBase.cardList[17]);
+         deck.Add(CardDataBase.cardList[18]);
+         deck.Add(CardDataBase.cardList[19]); 
         deckSize = deck.Count;
     }
 
@@ -143,6 +143,14 @@ public class PlayerDeck : MonoBehaviour
             }
         }
        
+    }
+
+    private void ReturnCardFromGraveyardToHand(Card card, bool _isPlayer)
+    {
+        if(IsPlayer == _isPlayer)
+        {
+            AddCardToHand(card);
+        }
     }
 
 }

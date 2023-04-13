@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -51,7 +53,6 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
     public UnityAction OnCardSelected;
     public UnityAction OnCardDeselected;
     public GraveyardController Graveyard;
-  
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -77,7 +78,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
     {
         cardBack = GetComponent<CardBack>();
         Enemy = GameObject.Find("EnemyGO(Clone)");
-        Graveyard = GameObject.Find("GravePlayer")?.GetComponent<GraveyardController>();
+        Graveyard = GameObject.Find("Graveyard")?.GetComponent<GraveyardController>();
 
         activated = false;
         InBattleSpace = false;
@@ -178,8 +179,8 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         Debug.Log(nameText.text + " attacks " + target.nameText.text + "!");
         AttackedThisTurn = true;
         int enemyDamage = target.thisCard.AttackPower;
-        target.Hit(thisCard.AttackPower);        
-        Hit(enemyDamage);
+        target.Hit(thisCard.AttackPower, this);        
+        Hit(enemyDamage, target);
     }
 
     public void Attack(PlayerScript target)
@@ -188,7 +189,7 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         target.UpdateHP(-thisCard.AttackPower);        
     }
 
-    public void Hit(int amount)
+    public void Hit(int amount, ThisCard target)
     {
         health -= amount;
         if (health <= 0) {
@@ -199,10 +200,21 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
             }
             // also kill the card itself
             Graveyard.AddCardToGraveyard(thisCard, IsPlayerCard);
+
+            CheckGraveyardEffect(target);
+
             Destroy(gameObject);
         } else {
             // if we did not die, just update health text
             healthText.text = health.ToString();
+        }
+    }
+
+    private void CheckGraveyardEffect(ThisCard target)
+    {
+        if (thisCard.ID == 10)
+        {
+            thisCard.Effects.ForEach(effect => effect.applyEffect(target));
         }
     }
 

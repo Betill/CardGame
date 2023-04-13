@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.UI;
 [System.Serializable ]
-public class Card 
+public class Card : ICloneable
 {
     public int ID;
     public string CardName;
@@ -28,6 +30,21 @@ public class Card
         this.ThisImage = ThisImage;
         this.EffectImage = EffectImage;
         this.Effects = effects;
+    }
+
+    public object Clone()
+    {
+        Card card = new Card();
+        card.ID = ID;
+        card.CardName = CardName;
+        card.AttackPower = AttackPower;
+        card.Health = Health;
+        card.CoolDown = CoolDown;
+        card.ThisImage = ThisImage;
+        card.EffectImage = EffectImage;
+        card.Effects = new List<IEffect>(Effects);
+
+        return card;
     }
 
 }
