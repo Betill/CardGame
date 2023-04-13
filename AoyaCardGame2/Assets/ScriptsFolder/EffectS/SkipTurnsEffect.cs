@@ -23,4 +23,9 @@ public class SkipTurnsEffect : IEffect
             TurnsController.instance.NextTurn();
         }
     }
+
+    public string getDescription()
+    {
+        return GetType().Name;
+    }
 }

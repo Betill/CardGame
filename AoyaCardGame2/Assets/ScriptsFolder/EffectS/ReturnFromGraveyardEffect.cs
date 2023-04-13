@@ -18,6 +18,11 @@ public class ReturnFromGraveyardEffect : IEffect
     public void applyEffect(ThisCard target = null)
     {
         graveyardController.RemoveCardFromGraveyard(card.ID, !target.IsPlayerCard);
-        
+
+    }
+
+    public string getDescription()
+    {
+        return GetType().Name;
     }
 }

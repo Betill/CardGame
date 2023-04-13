@@ -24,4 +24,9 @@ public class HealEffect : IEffect
         else
             enemy.UpdateHP(healAmount);
     }
+
+    public string getDescription()
+    {
+        return GetType().Name;
+    }
 }

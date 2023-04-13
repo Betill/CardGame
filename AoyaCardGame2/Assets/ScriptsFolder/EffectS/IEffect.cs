@@ -6,5 +6,6 @@ public interface IEffect
 {
     public bool isGoodEffect { get; }
 
+    public string getDescription();
     public void applyEffect(ThisCard target = null);
 }

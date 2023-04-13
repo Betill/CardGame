@@ -10,4 +10,9 @@ public class NoneEffect : IEffect
     {
         return;
     }
+
+    public string getDescription()
+    {
+        return GetType().Name;
+    }
 }

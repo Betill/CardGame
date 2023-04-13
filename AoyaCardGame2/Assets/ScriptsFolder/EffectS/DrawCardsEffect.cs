@@ -24,4 +24,9 @@ public class DrawCardsEffect : IEffect
             enemyDeck.DrawCard(numberOfCards);
 
     }
+
+    public string getDescription()
+    {
+        return "Draw " + numberOfCards + " cards.";
+    }
 }

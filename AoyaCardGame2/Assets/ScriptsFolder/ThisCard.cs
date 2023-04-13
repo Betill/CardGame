@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
+public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Card thisCard;
 
@@ -242,6 +242,20 @@ public class ThisCard : MonoBehaviour, IPointerClickHandler, IDropHandler
         return  card.onBattleField &&
                 card.activated &&
                 !card.AttackedThisTurn;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!IsPlayerCard)
+            return;
+
+        EffectDescriptionText.show = true;
+        EffectDescriptionText.description = thisCard.Effects[0].getDescription();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        EffectDescriptionText.show = false;
     }
 
     //public static void DeselectAllCards()

@@ -19,4 +19,9 @@ public class PowerBoostEffect : IEffect
     {
         card.AttackPower += cardPlace.cardsOnBF.Length;
     }
+
+    public string getDescription()
+    {
+        return GetType().Name;
+    }
 }

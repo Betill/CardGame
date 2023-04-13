@@ -18,4 +18,9 @@ public class AttackFromHandEffect : IEffect
         //Reduce enemy HP
         Debug.Log("The card attacked the enemy");
     }
+
+    public string getDescription()
+    {
+        return GetType().Name;
+    }
 }
